@@ -34,7 +34,7 @@ pipeline {
                 echo 'Compilation de DeRien.java'
                 bat '''
                     javac Derien.java
-                    java DeRien
+                    java Derien
                 '''
             }
         }
