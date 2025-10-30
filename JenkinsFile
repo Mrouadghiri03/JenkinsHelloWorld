@@ -1,0 +1,57 @@
+pipeline {
+    agent any
+    
+    
+    stages {
+        stage('Checkout') {
+            steps {
+                git branch: 'main',
+                    url: 'https://github.com/votre-username/votre-repo.git',
+            }
+        }
+        
+        stage('Build HelloWorld') {
+            steps {
+                echo 'Compilation de HelloWorld.java'
+                bat '''
+                    javac HelloWorld.java
+                    java HelloWorld
+                '''
+          
+            }
+        }
+        
+        stage('Build Merci') {
+            steps {
+                echo 'Compilation de Merci.java'
+                bat '''
+                    javac Merci.java
+                    java Merci
+                '''
+            }
+        }
+        
+        stage('Build DeRien') {
+            steps {
+                echo 'Compilation de DeRien.java'
+                bat '''
+                    javac DeRien.java
+                    java DeRien
+                '''
+            }
+        }
+    }
+    
+    post {
+        always {
+            echo 'Pipeline exécution terminée'
+            cleanWs()
+        }
+        success {
+            echo 'Tous les builds ont réussi!'
+        }
+        failure {
+            echo 'Une étape a échoué'
+        }
+    }
+}
