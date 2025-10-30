@@ -1,14 +1,11 @@
 pipeline {
     agent any
-     tools {
-        jdk 'JDK17'  
-    }
     
     stages {
         stage('Checkout') {
             steps {
                 git branch: 'main',
-                    url: 'https://github.com/Mrouadghiri03/JenkinsHelloWorld.git',
+                    url: 'https://github.com/Mrouadghiri03/JenkinsHelloWorld.git'
             }
         }
         
@@ -19,7 +16,6 @@ pipeline {
                     javac HelloWorld.java
                     java HelloWorld
                 '''
-          
             }
         }
         
