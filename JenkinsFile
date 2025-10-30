@@ -1,4 +1,4 @@
-pipeline {
+/*pipeline {
     agent any
     
     
@@ -52,6 +52,18 @@ pipeline {
         }
         failure {
             echo 'Une étape a échoué'
+        }
+    }
+}
+*/
+pipeline {
+    agent any
+
+    stages {
+        stage('Hello') {
+            steps {
+                echo 'Hello World from Jenkins!'
+            }
         }
     }
 }
